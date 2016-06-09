@@ -1,0 +1,98 @@
+*JumpToVerticalBlock.txt*	Like W / E, but vertically in the same column.
+
+		   JUMP TO VERTICAL BLOCK    by Ingo Karkat
+						     *JumpToVerticalBlock.vim*
+description			|JumpToVerticalBlock-description|
+usage				|JumpToVerticalBlock-usage|
+installation			|JumpToVerticalBlock-installation|
+configuration			|JumpToVerticalBlock-configuration|
+integration			|JumpToVerticalBlock-integration|
+limitations			|JumpToVerticalBlock-limitations|
+known problems			|JumpToVerticalBlock-known-problems|
+todo				|JumpToVerticalBlock-todo|
+history				|JumpToVerticalBlock-history|
+
+==============================================================================
+DESCRIPTION				     *JumpToVerticalBlock-description*
+
+This plugin ...
+
+HOW IT WORKS								     *
+
+SOURCE									     *
+(Original Vim tip, Stack Overflow answer, ...)
+
+SEE ALSO								     *
+(Plugins offering complementary functionality, or plugins using this library.)
+
+RELATED WORKS								     *
+
+- columnMove (vimscript #5402) moves to the end / start of vertical blocks of
+  non-whitespace; i.e. it has a single mapping combining ]w and ]W.
+
+==============================================================================
+USAGE						   *JumpToVerticalBlock-usage*
+
+							   *]w* *]W* *[w* *[W*
+]w			To [count]'th next start of a block of non-whitespace
+			characters at the current screen column.
+]W			To [count]'th next end of a block of non-whitespace
+			characters at the current screen column.
+[w			To [count]'th previous start of a block of
+			non-whitespace characters at the current screen column.
+[W			To [count]'th previous end of a block of
+			non-whitespace characters at the current screen column.
+
+EXAMPLE						 *JumpToVerticalBlock-example*
+
+==============================================================================
+INSTALLATION				    *JumpToVerticalBlock-installation*
+
+This script is packaged as a |vimball|. If you have the "gunzip" decompressor
+in your PATH, simply edit the *.vmb.gz package in Vim; otherwise, decompress
+the archive first, e.g. using WinZip. Inside Vim, install by sourcing the
+vimball or via the |:UseVimball| command. >
+    vim JumpToVerticalBlock*.vmb.gz
+    :so %
+To uninstall, use the |:RmVimball| command.
+
+DEPENDENCIES				    *JumpToVerticalBlock-dependencies*
+
+- Requires Vim 7.0 or higher.
+- Requires the CountJump plugin (vimscript #3130), version 1.60 or higher.
+
+==============================================================================
+CONFIGURATION				   *JumpToVerticalBlock-configuration*
+
+For a permanent configuration, put the following commands into your |vimrc|:
+configvar
+						   *JumpToVerticalBlock-remap*
+plugmap
+==============================================================================
+INTEGRATION				     *JumpToVerticalBlock-integration*
+
+==============================================================================
+LIMITATIONS				     *JumpToVerticalBlock-limitations*
+
+KNOWN PROBLEMS				  *JumpToVerticalBlock-known-problems*
+
+TODO						    *JumpToVerticalBlock-todo*
+
+IDEAS						   *JumpToVerticalBlock-ideas*
+
+==============================================================================
+HISTORY						 *JumpToVerticalBlock-history*
+
+GOAL
+First published version.
+
+0.01	09-Jun-2016
+Started development.
+
+==============================================================================
+Copyright: (C) 2016 Ingo Karkat
+The VIM LICENSE applies to this plugin; see |copyright|.
+
+Maintainer:	Ingo Karkat <ingo@karkat.de>
+==============================================================================
+ vim:tw=78:ts=8:ft=help:norl:
