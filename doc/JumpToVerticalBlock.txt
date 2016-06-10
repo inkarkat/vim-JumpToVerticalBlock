@@ -6,7 +6,6 @@ description			|JumpToVerticalBlock-description|
 usage				|JumpToVerticalBlock-usage|
 installation			|JumpToVerticalBlock-installation|
 configuration			|JumpToVerticalBlock-configuration|
-integration			|JumpToVerticalBlock-integration|
 limitations			|JumpToVerticalBlock-limitations|
 known problems			|JumpToVerticalBlock-known-problems|
 todo				|JumpToVerticalBlock-todo|
@@ -15,20 +14,33 @@ history				|JumpToVerticalBlock-history|
 ==============================================================================
 DESCRIPTION				     *JumpToVerticalBlock-description*
 
-This plugin ...
+There are far fewer vertical motions, especially those that maintain the
+current column (which can be influenced via 'nostartofline'). Mostly, one uses
+|k| / |j| to move up / down. With 'relativenumber', this can already be quite
+precise, but it's tedious to handle the [count] yourself. Many text formats
+have a natural structure of different indents and line lengths. So, like word
+and WORD-wise motion within a line, a notion of vertical "blocks", comprised
+of a sequence of non-whitespace characters under each other, can be helpful
+for quick navigation.
 
-HOW IT WORKS								     *
+This plugin provides |]w| and |]W| mapping that move vertically along the
+current screen column, to the beginning or end of a block of non-whitespace
+characters. I.e. they operate like |W| and |E|, but vertically.
 
-SOURCE									     *
-(Original Vim tip, Stack Overflow answer, ...)
 
 SEE ALSO								     *
-(Plugins offering complementary functionality, or plugins using this library.)
+- The |JumpToVerticalOccurrence.vim| plugin (vimscript #4841) has several
+  other vertical motions, like a vertical version of f{char}, and a move to
+  the next line with non-whitespace in the current column.
+- Check out the |CountJump.vim| plugin page (vimscript #3130) for a full list
+  of motions and text objects powered by it.
 
 RELATED WORKS								     *
 
 - columnMove (vimscript #5402) moves to the end / start of vertical blocks of
-  non-whitespace; i.e. it has a single mapping combining ]w and ]W.
+  non-whitespace; i.e. it has a single mapping combining ]w and ]W. So far
+  uses character columns instead of virtual screen ones. It inspired this
+  plugin.
 
 ==============================================================================
 USAGE						   *JumpToVerticalBlock-usage*
@@ -44,6 +56,25 @@ USAGE						   *JumpToVerticalBlock-usage*
 			non-whitespace characters at the current screen column.
 
 EXAMPLE						 *JumpToVerticalBlock-example*
+
+With the cursor starting at 0, it will move to positions 1, 2, ... when
+invoking the command next to it:
+
+]w   3]w   ]W ~
+0....0.....0.....3..2.
+
+1......
+..............
+..       ..1.    2...
+.......          ...1
+....
+        ........
+	.........1
+	...2..
+2....1
+....
+...........3.....0..0
+                 [w [W ~
 
 ==============================================================================
 INSTALLATION				    *JumpToVerticalBlock-installation*
@@ -67,9 +98,11 @@ CONFIGURATION				   *JumpToVerticalBlock-configuration*
 For a permanent configuration, put the following commands into your |vimrc|:
 configvar
 						   *JumpToVerticalBlock-remap*
-plugmap
-==============================================================================
-INTEGRATION				     *JumpToVerticalBlock-integration*
+To change the default motion mappings, use: >
+    let g:JumpToVerticalBlock_ToBeginMapping = 'w'
+    let g:JumpToVerticalBlock_ToEndMapping = 'W'
+To also change the [ / ] prefix to something else, follow the instructions for
+|CountJump-remap-motions|.
 
 ==============================================================================
 LIMITATIONS				     *JumpToVerticalBlock-limitations*
