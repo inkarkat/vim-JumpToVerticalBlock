@@ -90,7 +90,7 @@ To uninstall, use the |:RmVimball| command.
 DEPENDENCIES				    *JumpToVerticalBlock-dependencies*
 
 - Requires Vim 7.0 or higher.
-- Requires the CountJump plugin (vimscript #3130), version 1.60 or higher.
+- Requires the CountJump plugin (vimscript #3130), version 1.90 or higher.
 
 ==============================================================================
 CONFIGURATION				   *JumpToVerticalBlock-configuration*
@@ -123,7 +123,7 @@ First published version.
 Started development.
 
 ==============================================================================
-Copyright: (C) 2016 Ingo Karkat
+Copyright: (C) 2016-2017 Ingo Karkat
 The VIM LICENSE applies to this plugin; see |copyright|.
 
 Maintainer:	Ingo Karkat <ingo@karkat.de>

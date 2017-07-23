@@ -1,15 +1,17 @@
 " JumpToVerticalBlock.vim: Like W / E, but vertically in the same column.
 "
 " DEPENDENCIES:
-"   - JumpToVerticalBlock.vim autoload script
-"   - CountJump/Motion.vim autoload script
+"   - CountJump/Region/Motion.vim autoload script
 "
-" Copyright: (C) 2016 Ingo Karkat
+" Copyright: (C) 2016-2017 Ingo Karkat
 "   The VIM LICENSE applies to this script; see ':help copyright'.
 "
 " Maintainer:	Ingo Karkat <ingo@karkat.de>
 "
 " REVISION	DATE		REMARKS
+"	002	23-Jul-2017	Simplified implementation with the CountJump.vim
+"				1.90 support for argumentless a:Expr that
+"				returns the region pattern.
 "	001	09-Jun-2016	file creation
 
 " Avoid installing twice or when in unsupported Vim version.
@@ -30,17 +32,20 @@ if ! exists('g:JumpToVerticalBlock_ToEndMapping')
 endif
 
 
+
+"- functions -------------------------------------------------------------------
+
+function! JumpToVerticalBlock#Expr()
+    return '\%' . virtcol('.') . 'v\S'
+endfunction
+
+
 "- mappings --------------------------------------------------------------------
 
-if v:version < 702 | runtime autoload/JumpToVerticalBlock.vim | endif  " The Funcref doesn't trigger the autoload in older Vim versions.
-
-call CountJump#Motion#MakeBracketMotionWithJumpFunctions(
-\   '', g:JumpToVerticalBlock_ToBeginMapping, g:JumpToVerticalBlock_ToEndMapping,
-\   function('JumpToVerticalBlock#BeginForward'),
-\   function('JumpToVerticalBlock#BeginBackward'),
-\   function('JumpToVerticalBlock#EndForward'),
-\   function('JumpToVerticalBlock#EndBackward'),
-\   0
+call CountJump#Region#Motion#MakeBracketMotion('',
+\   g:JumpToVerticalBlock_ToBeginMapping, g:JumpToVerticalBlock_ToEndMapping,
+\   function('JumpToVerticalBlock#Expr'),
+\   1
 \)
 
 let &cpo = s:save_cpo
