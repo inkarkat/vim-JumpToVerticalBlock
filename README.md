@@ -37,12 +37,16 @@ USAGE
 
     ]w                      To [count]'th next start of a block of non-whitespace
                             characters at the current screen column.
+                            Like W, but vertically.
     ]W                      To [count]'th next end of a block of non-whitespace
                             characters at the current screen column.
+                            Like E, but vertically.
     [w                      To [count]'th previous start of a block of
                             non-whitespace characters at the current screen column.
+                            Like B, but vertically.
     [W                      To [count]'th previous end of a block of
                             non-whitespace characters at the current screen column.
+                            Like gE, but vertically.
 
 ### EXAMPLE
 
