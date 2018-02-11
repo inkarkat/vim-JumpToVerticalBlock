@@ -120,8 +120,8 @@ below).
 HISTORY
 ------------------------------------------------------------------------------
 
-##### GOAL
-First published version.
+##### 1.00    11-Feb-2018
+- First published version.
 
 ##### 0.01    09-Jun-2016
 - Started development.
