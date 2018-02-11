@@ -1,0 +1,147 @@
+*JumpToVerticalBlock.txt*	Like W / E, but vertically in the same column.
+
+		   JUMP TO VERTICAL BLOCK    by Ingo Karkat
+						     *JumpToVerticalBlock.vim*
+description			|JumpToVerticalBlock-description|
+usage				|JumpToVerticalBlock-usage|
+installation			|JumpToVerticalBlock-installation|
+configuration			|JumpToVerticalBlock-configuration|
+limitations			|JumpToVerticalBlock-limitations|
+known problems			|JumpToVerticalBlock-known-problems|
+todo				|JumpToVerticalBlock-todo|
+history				|JumpToVerticalBlock-history|
+
+==============================================================================
+DESCRIPTION				     *JumpToVerticalBlock-description*
+
+There are far fewer vertical motions, especially those that maintain the
+current column (which can be influenced via 'nostartofline'). Mostly, one uses
+|k| / |j| to move up / down. With 'relativenumber', this can already be quite
+precise, but it's tedious to handle the [count] yourself. Many text formats
+have a natural structure of different indents and line lengths. So, like word-
+and WORD-wise motion within a line, a notion of vertical "blocks", comprised
+of a sequence of non-whitespace characters under each other, can be helpful
+for quick navigation.
+
+This plugin provides |]w| and |]W| mappings that move vertically along the
+current screen column, to the beginning or end of a block of non-whitespace
+characters. That is, they operate like |W| and |E|, but vertically.
+
+
+SEE ALSO								     *
+- The |JumpToVerticalOccurrence.vim| plugin (vimscript #4841) has several
+  other vertical motions, like a vertical version of f{char}, and a move to
+  the next line with non-whitespace in the current column.
+- Check out the |CountJump.vim| plugin page (vimscript #3130) for a full list
+  of motions and text objects powered by it.
+
+RELATED WORKS								     *
+
+- columnMove (vimscript #5402) moves to the end / start of vertical blocks of
+  non-whitespace; i.e. it has a single mapping combining ]w and ]W. So far
+  uses character columns instead of virtual screen ones. It inspired this
+  plugin.
+
+==============================================================================
+USAGE						   *JumpToVerticalBlock-usage*
+							   *]w* *]W* *[w* *[W*
+]w			To [count]'th next start of a block of non-whitespace
+			characters at the current screen column.
+			Like |W|, but vertically.
+]W			To [count]'th next end of a block of non-whitespace
+			characters at the current screen column.
+			Like |E|, but vertically.
+[w			To [count]'th previous start of a block of
+			non-whitespace characters at the current screen column.
+			Like |B|, but vertically.
+[W			To [count]'th previous end of a block of
+			non-whitespace characters at the current screen column.
+			Like |gE|, but vertically.
+
+EXAMPLE						 *JumpToVerticalBlock-example*
+
+With the cursor starting at 0, it will move to positions 1, 2, ... when
+invoking the command next to it:
+
+]w   3]w   ]W ~
+|    |     | ~
+0....0.....0.....3..2. ~
+ ~
+1...... ~
+.............. ~
+..       ..1.    2... ~
+.......          ...1 ~
+.... ~
+        ........  ~
+	.........1 ~
+	...2.. ~
+2....1 ~
+.... ~
+...........3.....0..0 ~
+                 |  | ~
+                 [w [W ~
+
+==============================================================================
+INSTALLATION				    *JumpToVerticalBlock-installation*
+
+The code is hosted in a Git repo at
+    https://github.com/inkarkat/vim-JumpToVerticalBlock
+You can use your favorite plugin manager, or "git clone" into a directory used
+for Vim |packages|. Releases are on the "stable" branch, the latest unstable
+development snapshot on "master".
+
+This script is also packaged as a |vimball|. If you have the "gunzip"
+decompressor in your PATH, simply edit the *.vmb.gz package in Vim; otherwise,
+decompress the archive first, e.g. using WinZip. Inside Vim, install by
+sourcing the vimball or via the |:UseVimball| command. >
+    vim JumpToVerticalBlock*.vmb.gz
+    :so %
+To uninstall, use the |:RmVimball| command.
+
+DEPENDENCIES				    *JumpToVerticalBlock-dependencies*
+
+- Requires Vim 7.0 or higher.
+- Requires the CountJump plugin (vimscript #3130), version 1.90 or higher.
+
+==============================================================================
+CONFIGURATION				   *JumpToVerticalBlock-configuration*
+
+For a permanent configuration, put the following commands into your |vimrc|:
+						   *JumpToVerticalBlock-remap*
+To change the default motion mappings, use: >
+    let g:JumpToVerticalBlock_ToBeginMapping = 'w'
+    let g:JumpToVerticalBlock_ToEndMapping = 'W'
+To also change the [ / ] prefix to something else, follow the instructions for
+|CountJump-remap-motions|.
+
+==============================================================================
+LIMITATIONS				     *JumpToVerticalBlock-limitations*
+
+KNOWN PROBLEMS				  *JumpToVerticalBlock-known-problems*
+
+TODO						    *JumpToVerticalBlock-todo*
+
+IDEAS						   *JumpToVerticalBlock-ideas*
+
+CONTRIBUTING				      *JumpToVerticalBlock-contribute*
+
+Report any bugs, send patches, or suggest features via the issue tracker at
+https://github.com/inkarkat/vim-JumpToVerticalBlock/issues or email (address
+below).
+
+==============================================================================
+HISTORY						 *JumpToVerticalBlock-history*
+
+1.00	11-Feb-2018
+First published version.
+
+0.01	09-Jun-2016
+Started development.
+
+==============================================================================
+Copyright: (C) 2016-2018 Ingo Karkat
+The VIM LICENSE applies to this plugin; see |copyright|.
+
+Maintainer:	Ingo Karkat <ingo@karkat.de>
+==============================================================================
+ vim:tw=78:ts=8:ft=help:norl:
