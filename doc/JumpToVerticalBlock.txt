@@ -123,7 +123,7 @@ TODO						    *JumpToVerticalBlock-todo*
 
 IDEAS						   *JumpToVerticalBlock-ideas*
 
-CONTRIBUTING			*JumpToVerticalBlock-contribute*
+CONTRIBUTING				      *JumpToVerticalBlock-contribute*
 
 Report any bugs, send patches, or suggest features via the issue tracker at
 https://github.com/inkarkat/vim-JumpToVerticalBlock/issues or email (address
@@ -132,7 +132,7 @@ below).
 ==============================================================================
 HISTORY						 *JumpToVerticalBlock-history*
 
-GOAL
+1.00	11-Feb-2018
 First published version.
 
 0.01	09-Jun-2016

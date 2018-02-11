@@ -3,16 +3,10 @@
 " DEPENDENCIES:
 "   - CountJump/Region/Motion.vim autoload script
 "
-" Copyright: (C) 2016-2017 Ingo Karkat
+" Copyright: (C) 2016-2018 Ingo Karkat
 "   The VIM LICENSE applies to this script; see ':help copyright'.
 "
 " Maintainer:	Ingo Karkat <ingo@karkat.de>
-"
-" REVISION	DATE		REMARKS
-"	002	23-Jul-2017	Simplified implementation with the CountJump.vim
-"				1.90 support for argumentless a:Expr that
-"				returns the region pattern.
-"	001	09-Jun-2016	file creation
 
 " Avoid installing twice or when in unsupported Vim version.
 if exists('g:loaded_JumpToVerticalBlock') || (v:version < 700)
