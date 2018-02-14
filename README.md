@@ -18,7 +18,8 @@ This plugin provides ]w and ]W mappings that move vertically along the
 current screen column, to the beginning or end of a block of non-whitespace
 characters. That is, they operate like W and E, but vertically.
 
-SEE ALSO                                                                     \*
+### SEE ALSO
+
 - The JumpToVerticalOccurrence.vim plugin ([vimscript #4841](http://www.vim.org/scripts/script.php?script_id=4841)) has several
   other vertical motions, like a vertical version of f{char}, and a move to
   the next line with non-whitespace in the current column.

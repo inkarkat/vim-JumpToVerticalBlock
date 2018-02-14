@@ -29,6 +29,7 @@ characters. That is, they operate like |W| and |E|, but vertically.
 
 
 SEE ALSO								     *
+
 - The |JumpToVerticalOccurrence.vim| plugin (vimscript #4841) has several
   other vertical motions, like a vertical version of f{char}, and a move to
   the next line with non-whitespace in the current column.
